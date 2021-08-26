@@ -9,39 +9,17 @@ part of 'controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$Controller on ControllerBase, Store {
-  final _$counterAtom = Atom(name: 'ControllerBase.counter');
+  Computed<bool>? _$isValidComputed;
 
   @override
-  int get counter {
-    _$counterAtom.reportRead();
-    return super.counter;
-  }
-
-  @override
-  set counter(int value) {
-    _$counterAtom.reportWrite(value, super.counter, () {
-      super.counter = value;
-    });
-  }
-
-  final _$ControllerBaseActionController =
-      ActionController(name: 'ControllerBase');
-
-  @override
-  dynamic increment() {
-    final _$actionInfo = _$ControllerBaseActionController.startAction(
-        name: 'ControllerBase.increment');
-    try {
-      return super.increment();
-    } finally {
-      _$ControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
+  bool get isValid => (_$isValidComputed ??=
+          Computed<bool>(() => super.isValid, name: 'ControllerBase.isValid'))
+      .value;
 
   @override
   String toString() {
     return '''
-counter: ${counter}
+isValid: ${isValid}
     ''';
   }
 }

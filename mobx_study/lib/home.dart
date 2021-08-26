@@ -2,39 +2,73 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx_study/controller.dart';
 
-class MyHomePage extends StatelessWidget {
-  var controller = Controller();
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final controller = Controller();
+
+  _textField(
+      {required String labelText, onChanged, String? Function()? errorText}) {
+    return TextField(
+      onChanged: onChanged,
+      decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: labelText,
+          errorText: errorText == null ? null : errorText()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MobX'),
+        title: Text('Formulário'),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(25.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Observer(
-              builder: (_) {
-                return Text(
-                  '${controller.counter}',
-                  style: Theme.of(context).textTheme.headline4,
-                );
-              },
-            ),
+            Observer(builder: (_) {
+              return _textField(
+                  labelText: 'Name',
+                  onChanged: controller.client.changeName,
+                  errorText: controller.validateName);
+            }),
+            SizedBox(height: 20),
+            //
+            Observer(builder: (_) {
+              return _textField(
+                labelText: 'Email',
+                onChanged: controller.client.changeEmail,
+                errorText: controller.validateEmail,
+              );
+            }),
+            SizedBox(height: 20),
+            //
+            Observer(builder: (_) {
+              return _textField(
+                labelText: 'CPF',
+                onChanged: controller.client.changeCPF,
+                errorText: controller.validateCPF,
+              );
+            }),
+            SizedBox(height: 50),
+            //
+            Observer(builder: (_) {
+              return ElevatedButton(
+                onPressed: controller.isValid ? () {} : null,
+                child: Text(
+                  'SALVAR',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              );
+            })
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          controller.increment();
-        },
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
