@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:mobx_study/controller.dart';
 
 import 'home.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  GetIt getIt = GetIt.I;
+  getIt.registerSingleton<Controller>(Controller());
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
