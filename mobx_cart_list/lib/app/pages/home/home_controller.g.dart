@@ -17,23 +17,19 @@ mixin _$HomeController on _HomeControllerBase, Store {
               name: '_HomeControllerBase.totalChecked'))
           .value;
 
-  final _$listItemsAtom = Atom(name: '_HomeControllerBase.listItems');
-
-  @override
-  ObservableList<ItemModel> get listItems {
-    _$listItemsAtom.reportRead();
-    return super.listItems;
-  }
-
-  @override
-  set listItems(ObservableList<ItemModel> value) {
-    _$listItemsAtom.reportWrite(value, super.listItems, () {
-      super.listItems = value;
-    });
-  }
-
   final _$_HomeControllerBaseActionController =
       ActionController(name: '_HomeControllerBase');
+
+  @override
+  dynamic setFilter(String value) {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.setFilter');
+    try {
+      return super.setFilter(value);
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   dynamic addItem(ItemModel model) {
@@ -60,7 +56,6 @@ mixin _$HomeController on _HomeControllerBase, Store {
   @override
   String toString() {
     return '''
-listItems: ${listItems},
 totalChecked: ${totalChecked}
     ''';
   }
