@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:slidy_1/app/shared/models/pokemon_model.dart';
+import 'package:slidy_1/app/modules/home/models/pokemon_model.dart';
 
 class PokeRepository {
   final Dio dio;
