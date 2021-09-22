@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:login/app/shared/repositories/localStorage/local_storage_hive.dart';
+//import 'package:login/app/shared/repositories/localStorage/local_storage_hive.dart';
+import 'package:login/app/shared/repositories/localStorage/local_storage_interface.dart';
 import 'package:login/app/shared/repositories/localStorage/local_storage_shared.dart';
 
 import 'modules/home/home_module.dart';
@@ -7,7 +8,8 @@ import 'modules/home/home_module.dart';
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind((i) => LocalStorageShared()),
+    // Tipar o Bind para ser possível fazer a troca do contrato nos testes
+    Bind<ILocalStorage>((i) => LocalStorageShared()),
     //Bind((i) => LocalStorageHive()),
   ];
 
