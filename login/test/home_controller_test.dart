@@ -41,3 +41,12 @@ main() {
     expect(listStorage!.isEmpty, true);
   });
 }
+
+/* MEI e conta PJ Ok
+  Estrutura de projeto modular
+  Injeção de dependências
+  Módulos reaproveitáveis
+
+  Passei para o Adriano, ele gostou e está utilizando no projeto da faculdade
+  
+ */
