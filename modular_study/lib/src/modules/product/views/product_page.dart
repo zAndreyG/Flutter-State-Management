@@ -15,22 +15,27 @@ class ProductPage extends StatelessWidget {
           Container(
             color: Colors.grey[200],
             width: MediaQuery.of(context).size.width * 0.2,
-            child: Column(
-              children: [
-                ListTile(
-                  title: Text('Red'),
-                  onTap: () => Modular.to.navigate('./red'),
-                ),
-                ListTile(
-                  title: Text('Blue'),
-                  onTap: () => Modular.to.navigate('./blue'),
-                ),
-                ListTile(
-                  title: Text('Yellow'),
-                  onTap: () => Modular.to.navigate('./yellow'),
-                )
-              ],
-            ),
+            child: NavigationListener(builder: (context, widget) {
+              return Column(
+                children: [
+                  ListTile(
+                    title: Text('Red'),
+                    selected: Modular.to.path.endsWith('/red'),
+                    onTap: () => Modular.to.navigate('./red'),
+                  ),
+                  ListTile(
+                    title: Text('Blue'),
+                    selected: Modular.to.path.endsWith('/blue'),
+                    onTap: () => Modular.to.navigate('./blue'),
+                  ),
+                  ListTile(
+                    title: Text('Yellow'),
+                    selected: Modular.to.path.endsWith('/yellow'),
+                    onTap: () => Modular.to.navigate('./yellow'),
+                  )
+                ],
+              );
+            }),
           ),
           Expanded(child: RouterOutlet()),
         ],
@@ -39,7 +44,7 @@ class ProductPage extends StatelessWidget {
   }
 }
 
-//1:57:25
+//1:57:25 
 
 // Passar parâmetros via "url"
 // Modular.to.pushNamed('./list/2')

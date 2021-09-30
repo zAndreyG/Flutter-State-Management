@@ -10,10 +10,15 @@ class ProductModule extends Module {
   @override
   List<ModularRoute> get routes => [
         ChildRoute('/', child: (_, __) => ProductPage(), children: [
-          ChildRoute('/red', child: (_, __) => Container(color: Colors.red)),
-          ChildRoute('/blue', child: (_, __) => Container(color: Colors.blue)),
+          ChildRoute('/red',
+              child: (_, __) => Container(color: Colors.red),
+              transition: TransitionType.noTransition),
+          ChildRoute('/blue',
+              child: (_, __) => Container(color: Colors.blue),
+              transition: TransitionType.noTransition),
           ChildRoute('/yellow',
-              child: (_, __) => Container(color: Colors.yellow)),
+              child: (_, __) => Container(color: Colors.yellow),
+              transition: TransitionType.noTransition),
         ]),
         ChildRoute('/list',
             child: (_, args) => ListProductPage(id: args.data ?? ''),
