@@ -1,9 +1,9 @@
+import 'package:auth_module/src/blocs/events/login_event.dart';
+import 'package:auth_module/src/blocs/login_bloc.dart';
+import 'package:auth_module/src/blocs/states/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:modular_study/src/modules/auth/blocs/events/login_event.dart';
-import 'package:modular_study/src/modules/auth/blocs/login_bloc.dart';
-import 'package:modular_study/src/modules/auth/blocs/states/login_state.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

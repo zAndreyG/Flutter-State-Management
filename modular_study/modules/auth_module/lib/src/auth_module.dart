@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:modular_study/src/modules/auth/blocs/login_bloc.dart';
-import 'package:modular_study/src/modules/auth/repositories/login_repository.dart';
-import 'package:modular_study/src/modules/auth/views/login_page.dart';
+import 'blocs/login_bloc.dart';
+import 'repositories/login_repository.dart';
+import 'views/login_page.dart';
 
 class AuthModule extends Module {
   @override
